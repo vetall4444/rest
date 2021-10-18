@@ -11,14 +11,13 @@ const style = {
 };
 
 function MenuListItemCard(props) {
-  const { id, item } = props;
+  const { id, item, itemLoaded } = props;
   useEffect(() => {
     restoService.getItem(id).then((elem) => {
       itemLoaded(elem);
-      console.log(item);
     });
-  });
-
+  }, [id, itemLoaded]);
+  console.log(props);
   return (
     <div style={style}>
       <MenuListItem key={item.id} menuItem={item} />

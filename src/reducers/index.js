@@ -18,6 +18,8 @@ const reducer = (state = initialState, action) => {
     case "ITEM_LOADED":
       return {
         item: action.payload,
+        menu: state.menu,
+        loading: state.loading,
       };
     default:
       return state;

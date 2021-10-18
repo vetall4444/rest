@@ -13,9 +13,9 @@ const App = () => {
     >
       <AppHeader total={50} />
       <Switch>
-        <Route path="/main" exact component={MainPage} />
+        <Route path="/menu" exact component={MainPage} />
         <Route path="/cart" component={CartPage} />
-        <Route path="/main/:id" component={ItemCard} />
+        <Route path="/menu/:id" component={ItemCard} />
         <Route exact component={MainPage} />
       </Switch>
     </div>
