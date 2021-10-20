@@ -49,11 +49,11 @@ const addedToCart = (id, menuItems, cart, cartPrice) => {
     url: item.url,
     id: id,
   };
-  const index = cart.findIndex((elem) => elem.id === item.id);
+  const currentItem = cart.find((elem) => elem.id === item.id);
   let data = {};
-  if (index + 1) {
+  if (currentItem) {
     const items = cart.filter((item) => item.id !== id);
-    newItem.count = cart[index].count + 1;
+    newItem.count = currentItem.count + 1;
     data = {
       cart: [...items, newItem],
       cartPrice: cartPrice + newItem.price,
