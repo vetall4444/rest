@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import MenuListItem from "../menu-list-item";
 import { connect } from "react-redux";
 import RestoService from "../../services/resto-service";
-import { menuLoaded, menuRequested, addedToCart } from "../../actions";
+import { menuLoaded, menuRequested, addedToCart } from "../../redux/actions";
 import Spinner from "../spinner/spinner";
 
 import "./menu-list.scss";

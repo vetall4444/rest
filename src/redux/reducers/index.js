@@ -34,7 +34,7 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         cart: action.payload.cart,
-        cartPrice: state.cartPrice - action.payload.cartPrice,
+        cartPrice: action.payload.cartPrice,
       };
     case "CLEAR_CART":
       return {

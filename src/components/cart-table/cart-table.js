@@ -1,20 +1,20 @@
 import React from "react";
 import "./cart-table.scss";
 import { connect } from "react-redux";
-import { delletedFromCart, clearCart } from "../../actions";
+import { delletedFromCart, clearCart } from "../../redux/actions";
 import RestoService from "../../services/resto-service";
 
 const restoService = new RestoService();
 
 const CartTable = (props) => {
-  const { items, delletedFromCart, clearCart } = props;
+  const { items, delletedFromCart, clearCart, cartPrice } = props;
   return (
     <>
       <div className="cart__title">Ваш заказ:</div>
 
       <div className="cart__list">
         {items.map((item) => {
-          const { title, price, url, id, count, cartPrice } = item;
+          const { title, price, url, id, count } = item;
           return (
             <div key={id} className="cart__item">
               <img src={url} className="cart__item-img" alt={title}></img>
@@ -52,7 +52,7 @@ const CartTable = (props) => {
 function mapStateToProps(state) {
   return {
     items: state.cart,
-    price: state.cartPrice,
+    cartPrice: state.cartPrice,
   };
 }
 

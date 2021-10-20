@@ -17,13 +17,13 @@ const itemLoaded = (newItem) => {
   };
 };
 
-const delletedFromCart = (id, cart, cartPrice) => {
+const deletedFromCart = (id, cart, cartPrice) => {
+  const items = cart.filter((item) => item.id !== id);
   const itemIndex = cart.findIndex((item) => item.id === id);
-  const price = cart[itemIndex].price * cart[itemIndex].count;
-  const prev = cart.slice(0, itemIndex);
-  const next = cart.slice(itemIndex + 1);
+  const price = cartPrice - cart[itemIndex].price * cart[itemIndex].count;
+
   const data = {
-    cart: [...prev, ...next],
+    cart: items,
     cartPrice: price,
   };
   return {
@@ -52,11 +52,10 @@ const addedToCart = (id, menuItems, cart, cartPrice) => {
   const index = cart.findIndex((elem) => elem.id === item.id);
   let data = {};
   if (index + 1) {
-    const prev = cart.slice(0, index);
-    const next = cart.slice(index + 1);
+    const items = cart.filter((item) => item.id !== id);
     newItem.count = cart[index].count + 1;
     data = {
-      cart: [...prev, newItem, ...next],
+      cart: [...items, newItem],
       cartPrice: cartPrice + newItem.price,
     };
   } else {
@@ -66,7 +65,6 @@ const addedToCart = (id, menuItems, cart, cartPrice) => {
       cartPrice: cartPrice + newItem.price,
     };
   }
-
   return {
     type: "ITEM_ADD_TO_CART",
     payload: data,
@@ -77,7 +75,7 @@ export {
   menuRequested,
   itemLoaded,
   addedToCart,
-  delletedFromCart,
+  deletedFromCart,
   sumCart,
   clearCart,
 };

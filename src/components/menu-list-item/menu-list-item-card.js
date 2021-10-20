@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import { itemLoaded } from "../../actions";
+import { itemLoaded } from "../../redux/actions";
 import RestoService from "../../services/resto-service";
 import MenuListItem from "../menu-list-item";
 
