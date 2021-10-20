@@ -3,7 +3,7 @@ import "./menu-list-item.scss";
 import pizza from "../../img/pizza.png";
 import salad from "../../img/salad.png";
 
-const MenuListItem = ({ menuItem }) => {
+const MenuListItem = ({ menuItem, onAddToCart }) => {
   const { title, price, url, category } = menuItem;
   let categoryImg = null;
   switch (category) {
@@ -31,7 +31,9 @@ const MenuListItem = ({ menuItem }) => {
       <div className="menu__price">
         Price: <span>{price}$</span>
       </div>
-      <button className="menu__btn">Add to cart</button>
+      <button onClick={() => onAddToCart()} className="menu__btn">
+        Add to cart
+      </button>
     </li>
   );
 };
