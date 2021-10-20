@@ -1,13 +1,13 @@
 import React from "react";
 import "./cart-table.scss";
 import { connect } from "react-redux";
-import { delletedFromCart, clearCart } from "../../redux/actions";
+import { deletedFromCart, clearCart } from "../../redux/actions";
 import RestoService from "../../services/resto-service";
 
 const restoService = new RestoService();
 
 const CartTable = (props) => {
-  const { items, delletedFromCart, clearCart, cartPrice } = props;
+  const { items, deletedFromCart, clearCart, cartPrice } = props;
   return (
     <>
       <div className="cart__title">Ваш заказ:</div>
@@ -24,7 +24,7 @@ const CartTable = (props) => {
               </div>
               <div
                 onClick={() => {
-                  delletedFromCart(id, items, cartPrice);
+                  deletedFromCart(id, items, cartPrice);
                 }}
                 className="cart__close"
               >
@@ -57,7 +57,7 @@ function mapStateToProps(state) {
 }
 
 const mapDispatchToProps = {
-  delletedFromCart,
+  deletedFromCart,
   clearCart,
 };
 export default connect(mapStateToProps, mapDispatchToProps)(CartTable);
