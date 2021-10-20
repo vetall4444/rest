@@ -41,19 +41,17 @@ const clearCart = () => {
     type: "CLEAR_CART",
   };
 };
-const addedToCart = (id, menuItems, cart, cartPrice) => {
-  const item = menuItems.find((item) => item.id === id);
+const addedToCart = (menuItem, cart, cartPrice) => {
   const newItem = {
-    title: item.title,
-    price: item.price,
-    url: item.url,
-    id: id,
+    title: menuItem.title,
+    price: menuItem.price,
+    url: menuItem.url,
+    id: menuItem,
   };
-  const currentItem = cart.find((elem) => elem.id === item.id);
   let data = {};
-  if (currentItem) {
-    const items = cart.filter((item) => item.id !== id);
-    newItem.count = currentItem.count + 1;
+  if (menuItem.count !== undefined) {
+    const items = cart.filter((item) => item.id !== menuItem.id);
+    newItem.count = menuItem.count + 1;
     data = {
       cart: [...items, newItem],
       cartPrice: cartPrice + newItem.price,

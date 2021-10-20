@@ -33,7 +33,7 @@ function MenuList(props) {
         return (
           <MenuListItem
             onAddToCart={() => {
-              addedToCart(menuItem.id, menuItems, cart, cartPrice);
+              addedToCart(menuItem, cart, cartPrice);
             }}
             key={menuItem.id}
             menuItem={menuItem}
