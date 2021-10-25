@@ -46,12 +46,13 @@ const addedToCart = (menuItem, cart, cartPrice) => {
     title: menuItem.title,
     price: menuItem.price,
     url: menuItem.url,
-    id: menuItem,
+    id: menuItem.id,
   };
   let data = {};
-  if (menuItem.count !== undefined) {
+  const currentItem = cart.find((item) => item.id === menuItem.id);
+  if (!!currentItem) {
     const items = cart.filter((item) => item.id !== menuItem.id);
-    newItem.count = menuItem.count + 1;
+    newItem.count = currentItem.count + 1;
     data = {
       cart: [...items, newItem],
       cartPrice: cartPrice + newItem.price,
